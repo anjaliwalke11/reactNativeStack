@@ -7,12 +7,12 @@ import { ApolloProvider } from 'react-apollo';
 import { store, client } from './Reducers';
 
 
-import App from './WebView/App';
+import AppConnect from './WebView/App';
 
 
 render(
   <ApolloProvider client={client} store={store}>
-    <App />
+    <AppConnect store={store}/>
   </ApolloProvider>,
   document.getElementById('root')
 )

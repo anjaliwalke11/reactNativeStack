@@ -1,3 +1,8 @@
 {
-  "GITHUB_GRAPHQL": "https://api.github.com/graphql"
+  "GITHUB_GRAPHQL": "https://api.github.com/graphql",
+  "GITHUB_AUTH_URL_PATH": "https://api.github.com/authorizations",
+  "GITHUB_USERNAME": "sajus",
+  "GITHUB_PASSWORD": "XXXXXXXX",
+  "GITHUB_CLIENT_ID":"0bc0e5b2c86af89d3232",
+  "GITHUB_CLIENT_SECRET":"cb16824c2647d16a4cceb4983368202393e4849b"
 }

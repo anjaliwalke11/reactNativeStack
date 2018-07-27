@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
+    const {login} = this.props;
     return (
       <div className="App">
         <header className="App-header">
@@ -18,4 +20,14 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(login, TOKEN) {
+  return {
+    isLogin: login, //state
+    login: TOKEN,
+  }
+}
+const AppConnect = connect(
+  mapStateToProps
+)(App);
+
+export default AppConnect;

@@ -1,27 +1,42 @@
-// import gql from "graphql-tag";
-//
-// const getGitFollowers = function(gitUserName) {
-//   return {
-//
-//     gql `
-//   query followers($states: [IssueState!], $name: String!, $login: String!, $before: String) {
-//     repositoryOwner(login: $login) {
-//       repository(name: $name) {
-//         issues(last: 25, states: $states, before: $before) {
-//           edges {
-//             node {
-//               id
-//               title
-//             }
-//           	cursor
-//           }
-//           pageInfo {
-//             hasPreviousPage
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
-//   }
-// }
+import gql from "graphql-tag";
+import { client , store } from '../Reducers'
+import {
+  gitFollowersSuccessCreator
+} from '../Actions/GitActions'
+const GET_GIT_FOLLOERS = gql `
+  query getFollers($login: String!) {
+    user(login: $login) {
+      followers(first: 20) {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+      following(first: 20) {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`;
+
+const gitHubFollers = function(user) {
+  return client.query({
+    query: GET_GIT_FOLLOERS,
+    variables: {
+      'login': user
+    }
+  })
+  .then(function(data){
+    //return data;
+    store.dispatch(gitFollowersSuccessCreator(data))
+  })
+}
+
+export { gitHubFollers }
