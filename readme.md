@@ -1,9 +1,3 @@
-Apollo with ReactNative;
-https://s3.amazonaws.com/apollo-docs-1.x/react-native.html
+Stack developed with the purpose to have single code base which will be used to run both React Native and React Web applications.
 
-
-Apollo with Redux store;
-https://s3.amazonaws.com/apollo-docs-1.x/redux.html
-
-Debugging;
-https://medium.com/research-engineering-at-simply-technologies/react-native-debugging-like-a-god-9610ac2ffd12
+More writeup on this will be coming soon..
