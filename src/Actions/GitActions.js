@@ -4,6 +4,7 @@ const GIT_LOGIN_FAILD = "git_login_faild"
 const GIT_LOGIN_EVENT = "git_login_event"
 const GIT_FOLLOWER_SUCCESS = "git_folloers_sucess"
 const GIT_FOLLOWER_QUERY = "git_folloers_query"
+const GIT_COMMITS_SUCCESS = "git_commits_success"
 
 /* Action Creators */
 function loginActionSuccessCreator(login) {
@@ -38,6 +39,14 @@ function gitFollowersQueryCreator(userQuery) {
   return action
 }
 
+function gitCommitsSuccessCreator(commit) {
+  const action = {
+    type: GIT_COMMITS_SUCCESS,
+    commit
+  }
+  return action
+}
+
 
 export {
   GIT_LOGIN_SUCCESS,
@@ -45,8 +54,10 @@ export {
   GIT_LOGIN_EVENT,
   GIT_FOLLOWER_SUCCESS,
   GIT_FOLLOWER_QUERY,
+  GIT_COMMITS_SUCCESS,
   loginActionSuccessCreator,
   loginActionFaildCreator,
   gitFollowersSuccessCreator,
-  gitFollowersQueryCreator
+  gitFollowersQueryCreator,
+  gitCommitsSuccessCreator
 }

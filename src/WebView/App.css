@@ -1,3 +1,6 @@
+body {
+  background-color: #F0F8FF;
+}
 .App {
   text-align: center;
 }
@@ -20,6 +23,33 @@
 
 .App-intro {
   font-size: large;
+}
+
+.Input-container {
+  padding: 10px;
+}
+
+.Button-user-commit {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.Table-commits {
+  border: 1px solid gray;
+  margin: 20px auto;
+}
+
+.Table-header {
+  border: 1px solid gray;
+  padding: 10px 0;
+  background-color: #B0C4DE;
+}
+
+.Table-rows {
+  padding: 10px 30px;
+  border-bottom: 1px solid gray;
+  background-color: #E6E6FA;
 }
 
 @keyframes App-logo-spin {

@@ -26,7 +26,8 @@ import {
   loginActionSuccessCreator
 } from '../Actions/GitActions';
 import {
-  gitHubFollers
+  gitHubFollers,
+  gitHubCommits
 } from '../Graphql/github'
 
 /* Apollo Redux */
@@ -63,15 +64,23 @@ const rootReducer = function(store, action) {
 }
 
 /* Create Dummy inital store  */
-let initialStore = {};
+let initialStore = {
+  gitHub: {
+    commits: []
+  }
+};
 
-let store = createStore(rootReducer, compose(applyMiddleware(ReduxPromise)));
+let store = createStore(rootReducer, initialStore, compose(applyMiddleware(ReduxPromise)));
 
 gitLogin().then(function(token) {
   TOKEN = token;
   store.dispatch(loginActionSuccessCreator(token));
-  gitHubFollers('sajus');
+  // gitHubCommits('sajus');
 });
+
+store.subscribe(() => {
+  console.log("getstate-->>>",store.getState());
+})
 
 
 export {

@@ -1,7 +1,8 @@
 import gql from "graphql-tag";
 import { client , store } from '../Reducers'
 import {
-  gitFollowersSuccessCreator
+  gitFollowersSuccessCreator,
+  gitCommitsSuccessCreator
 } from '../Actions/GitActions'
 const GET_GIT_FOLLOERS = gql `
   query getFollers($login: String!) {
@@ -26,6 +27,31 @@ const GET_GIT_FOLLOERS = gql `
   }
 `;
 
+const GET_GIT_COMMITS = gql `
+  query getCommits($login: String!) {
+    user(login: $login) {
+      pullRequests (first: 50) {
+        edges {
+          node {
+            commits (first: 50) {
+              edges {
+                node {
+                  commit {
+                    tree {
+                      id
+                      commitUrl
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 const gitHubFollers = function(user) {
   return client.query({
     query: GET_GIT_FOLLOERS,
@@ -39,4 +65,18 @@ const gitHubFollers = function(user) {
   })
 }
 
-export { gitHubFollers }
+const gitHubCommits = function(user) {
+  return client.query({
+    query: GET_GIT_COMMITS,
+    variables: {
+      'login': user
+    }
+  })
+  .then(function(data){
+    store.dispatch(gitCommitsSuccessCreator(data))
+  })
+}
+
+
+
+export { gitHubCommits }

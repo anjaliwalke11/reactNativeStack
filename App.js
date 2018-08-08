@@ -16,7 +16,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <ApolloProvider client={client} store={store}>
-        <RootComponent />
+        <RootComponent store={store}/>
       </ApolloProvider>
     );
   }
